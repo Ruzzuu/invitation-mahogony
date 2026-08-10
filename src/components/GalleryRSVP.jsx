@@ -137,13 +137,13 @@ export default function GalleryRSVP() {
       </div>
 
       {/* RSVP & Wishes Section (Dark with Background) */}
-      <div className="relative py-10 rounded-t-3xl -mt-6 overflow-hidden shadow-[0_-10px_20px_rgba(0,0,0,0.2)]">
+      <div
+        className="relative py-10 rounded-t-3xl -mt-6 overflow-hidden bg-cover bg-center shadow-[0_-10px_20px_rgba(0,0,0,0.2)]"
+        style={{ backgroundImage: 'url(/together.jpeg)' }}
+      >
         {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img src="/together.jpeg" alt="Background" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-mahogany/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-mahogany via-transparent to-mahogany/45" />
-        </div>
+        <div className="absolute inset-0 bg-mahogany/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-mahogany via-transparent to-mahogany/40" />
 
         <div className="relative z-10">
           {/* RSVP section */}
