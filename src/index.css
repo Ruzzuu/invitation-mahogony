@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  html, body, #root {
+    height: 100%;
+    overscroll-behavior: none;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #401801;
+    color: #EFEFF0;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .spin-paused {
+    animation-play-state: paused;
+  }
+
+  .anim-delay-100 { animation-delay: 0.1s; }
+  .anim-delay-200 { animation-delay: 0.2s; }
+  .anim-delay-300 { animation-delay: 0.3s; }
+  .anim-delay-400 { animation-delay: 0.4s; }
+  .anim-delay-500 { animation-delay: 0.5s; }
+}
