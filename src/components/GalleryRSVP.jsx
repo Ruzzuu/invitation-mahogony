@@ -24,7 +24,7 @@ function timeAgo(iso) {
 
 const SAMPLE_WISHES = [
   { id: 's1', name: 'Siti Rahayu', message: 'Semoga pernikahan kalian menjadi berkah dan kebahagiaan yang abadi. Selamat menempuh hidup baru! 💕', created_at: new Date(Date.now() - 3600000).toISOString() },
-  { id: 's2', name: 'Ahmad Fauzi', message: 'Barakallahu lakuma wa baraka alaikuma wa jama\'a bainakuma fi khair. Congrats Siti & Rizaldy!', created_at: new Date(Date.now() - 7200000).toISOString() },
+  { id: 's2', name: 'Ahmad Fauzi', message: 'Barakallahu lakuma wa baraka alaikuma wa jama\'a bainakuma fi khair. Congrats Alfa & Rizaldy!', created_at: new Date(Date.now() - 7200000).toISOString() },
 ]
 
 export default function GalleryRSVP() {
