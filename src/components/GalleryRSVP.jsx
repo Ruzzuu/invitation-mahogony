@@ -3,12 +3,11 @@ import { supabase } from '../lib/supabase'
 import FadeIn from './FadeIn'
 
 const PHOTOS = [
-  { url: '/together.jpeg', tall: true },
-  { url: '/bride.png', tall: false },
-  { url: '/groom.png', tall: false },
-  { url: '/together.jpeg', tall: true },
-  { url: '/bride.png', tall: false },
-  { url: '/groom.png', tall: false },
+  { url: '/foto1.jpeg', alt: 'Gallery photo 1' },
+  { url: '/foto2.jpeg', alt: 'Gallery photo 2' },
+  { url: '/foto3.jpeg', alt: 'Gallery photo 3' },
+  { url: '/foto4.jpeg', alt: 'Gallery photo 4' },
+  { url: '/foto5.jpeg', alt: 'Gallery photo 5' },
 ]
 
 const COLORS = ['bg-ivory/15', 'bg-ivory/20', 'bg-ivory/25']
@@ -41,12 +40,24 @@ export default function GalleryRSVP() {
   const [rsvpSending, setRsvpSending] = useState(false)
   const [rsvpError, setRsvpError] = useState('')
   const [wishError, setWishError] = useState('')
+  const [selectedPhoto, setSelectedPhoto] = useState(null)
 
   const listRef = useRef(null)
 
   useEffect(() => {
     loadWishes()
   }, [])
+
+  useEffect(() => {
+    if (!selectedPhoto) return
+
+    function closeOnEscape(e) {
+      if (e.key === 'Escape') setSelectedPhoto(null)
+    }
+
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [selectedPhoto])
 
   async function loadWishes() {
     const { data, error } = await supabase
@@ -105,18 +116,22 @@ export default function GalleryRSVP() {
         </FadeIn>
 
         {/* Masonry gallery */}
-        <FadeIn className="px-4 grid grid-cols-2 gap-2">
-          {PHOTOS.map(({ url, tall }, i) => (
-            <div
-              key={i}
-              className={`rounded-xl overflow-hidden shadow-sm ${tall ? 'row-span-2' : ''}`}
-              style={{
-                backgroundImage: `url(${url})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                height: tall ? '280px' : '130px',
-              }}
-            />
+        <FadeIn className="px-4 columns-2 gap-3 space-y-3">
+          {PHOTOS.map((photo, i) => (
+            <button
+              key={photo.url}
+              type="button"
+              onClick={() => setSelectedPhoto(photo)}
+              className="group mb-3 block w-full overflow-hidden rounded-xl bg-mahogany/5 shadow-sm outline-none ring-mahogany/20 transition active:scale-[0.98] focus-visible:ring-2"
+              aria-label={`Buka foto galeri ${i + 1}`}
+            >
+              <img
+                src={photo.url}
+                alt={photo.alt}
+                className="h-auto w-full transition duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+            </button>
           ))}
         </FadeIn>
       </div>
@@ -276,6 +291,31 @@ export default function GalleryRSVP() {
           </FadeIn>
         </div>
       </div>
+
+      {selectedPhoto && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-mahogany/95 p-4"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setSelectedPhoto(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setSelectedPhoto(null)}
+            className="absolute left-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-ivory text-mahogany shadow-lg transition hover:bg-ivory/90 active:scale-95"
+            aria-label="Tutup foto"
+          >
+            <span className="material-symbols-outlined text-2xl">close</span>
+          </button>
+
+          <img
+            src={selectedPhoto.url}
+            alt={selectedPhoto.alt}
+            className="max-h-[88vh] max-w-full rounded-2xl object-contain shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   )
 }
