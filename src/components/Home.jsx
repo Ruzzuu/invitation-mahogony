@@ -7,7 +7,7 @@ const CAL_LINK = "https://calendar.google.com/calendar/render?action=TEMPLATE&te
 
 export default function Home({ onTabChange, onShare }) {
   return (
-    <div className="min-h-full bg-mahogany pb-6">
+    <div className="min-h-full bg-mahogany pb-14">
       {/* Header hero */}
       <FadeIn className="relative w-full bg-cover bg-center" style={{ backgroundImage: 'url(/together.jpeg)' }}>
         <div className="absolute inset-0 bg-mahogany/55" />
@@ -50,7 +50,7 @@ export default function Home({ onTabChange, onShare }) {
         <p className="text-sm font-medium tracking-wide">Sabtu, 24 Oktober 2026</p>
         <p className="text-xs text-ivory/70 mt-1 mb-4">Jakarta, Indonesia</p>
 
-        <div className="flex flex-col gap-3 mt-4">
+        <div className="flex flex-col gap-3 mt-4 mb-4">
           <button
             onClick={onShare}
             className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl bg-ivory/10 border border-ivory/20 text-ivory font-semibold text-sm active:scale-95 transition-transform"

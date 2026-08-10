@@ -27,7 +27,7 @@ function PersonCard({ photo, name, parents }) {
 
 export default function CoupleProfile() {
   return (
-    <div className="min-h-full bg-ivory pb-6 pt-8 rounded-t-3xl -mt-6 relative z-20 shadow-[0_-10px_20px_rgba(0,0,0,0.2)]">
+    <div className="min-h-full bg-ivory pb-6 pt-10 rounded-t-3xl -mt-3 relative z-20 shadow-[0_-10px_20px_rgba(0,0,0,0.16)]">
       {/* Header */}
       <FadeIn className="px-8 text-center mb-6">
         <p className="text-xs tracking-[0.2em] uppercase text-mahogany/60 font-semibold mb-4">THE COUPLE</p>
