@@ -51,7 +51,7 @@ export default function Cover({ onOpen }) {
           The Wedding Of
         </p>
         <h1 className="font-serif text-5xl md:text-6xl text-ivory leading-none drop-shadow-lg uppercase">
-          Putri &amp; Anto
+          Siti &amp; Rizaldy
         </h1>
       </div>
 

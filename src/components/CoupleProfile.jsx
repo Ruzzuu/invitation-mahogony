@@ -42,15 +42,15 @@ export default function CoupleProfile() {
       {/* Bride */}
       <PersonCard
         photo={BRIDE_PHOTO}
-        name="Putri Angelina"
-        parents="The Daughter of Ridwan Jayadi and Ibu Hj. Angelina"
+        name="Siti Nur Alfatihana, S.KM."
+        parents="Putri dari Bpk. Alit Tasrifuddin dan Ibu Riana Resmi"
       />
 
       {/* Groom */}
       <PersonCard
         photo={GROOM_PHOTO}
-        name="Anton Renaldi"
-        parents="The Son of H. Muhammad Maki and Ibu Hj. Hasanah"
+        name="Mochammad Rizaldy Irawan, A.Md."
+        parents="Putra dari Bpk. Mochamad Erwan Boedi Santoso, S.Sos. dan Ibu Faizah Juniati"
       />
     </div>
   )

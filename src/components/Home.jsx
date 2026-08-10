@@ -3,7 +3,7 @@ import FadeIn from './FadeIn'
 
 const CAL_DATE = '20261024T080000'
 const CAL_END = '20261024T140000'
-const CAL_LINK = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Putri+%26+Anto&dates=/&details=Kami+mengundang+kehadiran+Anda&location=Jakarta"
+const CAL_LINK = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Siti+%26+Rizaldy&dates=/&details=Kami+mengundang+kehadiran+Anda&location=Jakarta"
 
 export default function Home({ onTabChange, onShare }) {
   return (
@@ -17,10 +17,10 @@ export default function Home({ onTabChange, onShare }) {
             The Wedding Of
           </p>
           <h1 className="font-serif text-5xl drop-shadow-lg italic">
-            Putri &amp;
+            Siti &amp;
           </h1>
           <h1 className="font-serif text-5xl drop-shadow-lg italic ml-12 mt-1">
-            Anto
+            Rizaldy
           </h1>
         </div>
       </FadeIn>

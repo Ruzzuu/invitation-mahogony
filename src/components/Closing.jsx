@@ -25,8 +25,8 @@ export default function Closing() {
         <FadeIn>
           <p className="font-serif text-lg md:text-xl text-ivory/90 leading-relaxed drop-shadow-md">
             Merupakan suatu kehormatan dan kebahagiaan bagi kami<br/>
-            apabila Bapak/Ibu/ Saudara/I berkenan hadir untuk<br/>
-            memberikan do'a restu kepada putri kami.
+            apabila Bapak/Ibu/Saudara/i berkenan hadir untuk<br/>
+            memberikan do'a restu kepada putra-putri kami.
           </p>
         </FadeIn>
 
@@ -45,20 +45,20 @@ export default function Closing() {
             {/* Family 1 */}
             <div className="text-center">
               <p className="font-serif text-lg md:text-xl text-ivory/90 border-b border-ivory/40 pb-1 mb-1 inline-block">
-                Kel. Bpk. Dr. H. Rusman Nurdin, S.Sen., M.Sn.
+                Kel. Bpk. Mochamad Erwan Boedi Santoso, S.Sos.
               </p>
               <p className="font-serif text-base md:text-lg text-ivory/80">
-                Ibu Hj. Lilis Sriyeti, BA.
+                Ibu Faizah Juniati
               </p>
             </div>
 
             {/* Family 2 */}
             <div className="text-center">
               <p className="font-serif text-lg md:text-xl text-ivory/90 border-b border-ivory/40 pb-1 mb-1 inline-block">
-                Kel. Bpk. Supriatna (Alm)
+                Kel. Bpk. Alit Tasrifuddin
               </p>
               <p className="font-serif text-base md:text-lg text-ivory/80">
-                Ibu Eti Rohayati
+                Ibu Riana Resmi
               </p>
             </div>
           </div>
