@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { supabase } from '../lib/supabase'
+import { INVITATION_SLUG, supabase } from '../lib/supabase'
 import FadeIn from './FadeIn'
 
 const PHOTOS = [
@@ -22,13 +22,8 @@ function timeAgo(iso) {
   return `${Math.floor(h / 24)} hari lalu`
 }
 
-const SAMPLE_WISHES = [
-  { id: 's1', name: 'Siti Rahayu', message: 'Semoga pernikahan kalian menjadi berkah dan kebahagiaan yang abadi. Selamat menempuh hidup baru! 💕', created_at: new Date(Date.now() - 3600000).toISOString() },
-  { id: 's2', name: 'Ahmad Fauzi', message: 'Barakallahu lakuma wa baraka alaikuma wa jama\'a bainakuma fi khair. Congrats Alfa & Rizaldy!', created_at: new Date(Date.now() - 7200000).toISOString() },
-]
-
 export default function GalleryRSVP() {
-  const [wishes, setWishes] = useState(SAMPLE_WISHES)
+  const [wishes, setWishes] = useState([])
   const [name, setName] = useState('')
   const [message, setMessage] = useState('')
   const [sending, setSending] = useState(false)
@@ -63,9 +58,15 @@ export default function GalleryRSVP() {
     const { data, error } = await supabase
       .from('wishes')
       .select('id, name, message, created_at')
+      .eq('invitation_slug', INVITATION_SLUG)
       .order('created_at', { ascending: false })
       .limit(50)
-    if (!error && data?.length) setWishes(data)
+
+    if (error) {
+      setWishError('Ucapan belum dapat dimuat. Silakan coba lagi.')
+    } else {
+      setWishes(data ?? [])
+    }
   }
 
   async function sendWish(e) {
@@ -75,7 +76,11 @@ export default function GalleryRSVP() {
     setWishError('')
     const { data, error } = await supabase
       .from('wishes')
-      .insert({ name: name.trim(), message: message.trim() })
+      .insert({
+        invitation_slug: INVITATION_SLUG,
+        name: name.trim(),
+        message: message.trim(),
+      })
       .select()
       .single()
     setSending(false)
@@ -96,7 +101,12 @@ export default function GalleryRSVP() {
     setRsvpError('')
     const { error } = await supabase
       .from('rsvp')
-      .insert({ name: rsvpName.trim(), hadir, jumlah_tamu: hadir ? jumlah : 0 })
+      .insert({
+        invitation_slug: INVITATION_SLUG,
+        name: rsvpName.trim(),
+        hadir,
+        jumlah_tamu: hadir ? jumlah : 0,
+      })
     setRsvpSending(false)
     if (error) {
       setRsvpError('Gagal mengirim konfirmasi. Silakan coba lagi.')
@@ -238,22 +248,29 @@ export default function GalleryRSVP() {
 
             {/* Wish list */}
             <div ref={listRef} className="flex flex-col gap-4 mb-6 max-h-[400px] overflow-y-auto no-scrollbar pr-2">
-              {wishes.map((w, i) => (
-                <div key={w.id} className="bg-mahogany/90 border border-ivory/20 rounded-2xl p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div
-                      className={`w-10 h-10 rounded-full ${COLORS[i % COLORS.length]} flex items-center justify-center text-ivory font-medium text-sm flex-shrink-0 shadow-inner`}
-                    >
-                      {w.name?.charAt(0).toUpperCase()}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium text-sm text-ivory/90 truncate">{w.name}</p>
-                      <p className="text-[10px] text-ivory/40 mt-0.5">{timeAgo(w.created_at)}</p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-ivory/70 leading-relaxed">{w.message}</p>
+              {wishes.length === 0 ? (
+                <div className="bg-mahogany/70 border border-ivory/15 rounded-2xl px-5 py-8 text-center">
+                  <p className="text-sm text-ivory/60">Belum ada ucapan.</p>
+                  <p className="text-xs text-ivory/40 mt-1">Jadilah yang pertama memberikan doa terbaik.</p>
                 </div>
-              ))}
+              ) : (
+                wishes.map((w, i) => (
+                  <div key={w.id} className="bg-mahogany/90 border border-ivory/20 rounded-2xl p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div
+                        className={`w-10 h-10 rounded-full ${COLORS[i % COLORS.length]} flex items-center justify-center text-ivory font-medium text-sm flex-shrink-0 shadow-inner`}
+                      >
+                        {w.name?.charAt(0).toUpperCase()}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-sm text-ivory/90 truncate">{w.name}</p>
+                        <p className="text-[10px] text-ivory/40 mt-0.5">{timeAgo(w.created_at)}</p>
+                      </div>
+                    </div>
+                    <p className="text-sm text-ivory/70 leading-relaxed">{w.message}</p>
+                  </div>
+                ))
+              )}
             </div>
 
             {/* Send wish form */}
