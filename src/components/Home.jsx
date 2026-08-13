@@ -1,8 +1,8 @@
 ﻿import Countdown from './Countdown'
 import FadeIn from './FadeIn'
 
-const CAL_DATE = '20261024T080000'
-const CAL_END = '20261024T140000'
+const CAL_DATE = '20260905T090000'
+const CAL_END = '20260905T150000'
 const CAL_LINK = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Alfa+%26+Rizaldy&dates=/&details=Kami+mengundang+kehadiran+Anda&location=Jakarta"
 
 export default function Home({ onTabChange, onShare }) {
@@ -31,10 +31,10 @@ export default function Home({ onTabChange, onShare }) {
         <div className="p-8 text-center">
           <p className="text-xs tracking-[0.2em] uppercase text-mahogany/60 font-semibold mb-4">THE INVITATION</p>
           <p className="text-xs text-mahogany/80 leading-relaxed mb-4">
-            "And one of His signs is that He created mates for you from yourselves that you may find rest in them, and He put between you love and compassion; most surely there are signs in this for a people who reflect."
+            "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri, agar kamu merasa tenteram kepadanya. Dan Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
           </p>
           <p className="text-[10px] text-mahogany/60 italic">
-            (Q.S. Ar-Rum : 21)
+            QS. Ar-Rum 21
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export default function Home({ onTabChange, onShare }) {
 
       {/* Event Details & Actions */}
       <FadeIn className="mt-5 px-6 text-center text-ivory">
-        <p className="text-sm font-medium tracking-wide">Sabtu, 24 Oktober 2026</p>
+        <p className="text-sm font-medium tracking-wide">Sabtu, 5 September 2026</p>
         <p className="text-xs text-ivory/70 mt-1 mb-4">Jakarta, Indonesia</p>
 
         <div className="flex flex-col gap-3 mt-4 mb-4">

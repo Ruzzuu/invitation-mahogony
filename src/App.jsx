@@ -8,7 +8,7 @@ import EventDetails from './components/EventDetails'
 import GalleryRSVP from './components/GalleryRSVP'
 import Closing from './components/Closing'
 
-export const WEDDING_DATE = new Date('2026-10-24T08:00:00')
+export const WEDDING_DATE = new Date('2026-09-05T09:00:00')
 
 const SECTIONS = ['home', 'couple', 'events', 'gallery', 'closing']
 

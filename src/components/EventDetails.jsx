@@ -19,8 +19,8 @@ export default function EventDetails() {
           {/* Akad Nikah */}
           <div className="mb-6">
             <h3 className="font-serif text-2xl tracking-widest mb-3">AKAD NIKAH</h3>
-            <p className="text-sm font-medium mb-1">Minggu, 2 Januari 2022</p>
-            <p className="text-sm font-medium mb-1">Pukul 08:00 WIB</p>
+            <p className="text-sm font-medium mb-1">Sabtu, 5 September 2026</p>
+            <p className="text-sm font-medium mb-1">Pukul 09:00 WIB</p>
             <p className="text-sm text-ivory/80">Masjid Istiqlal, Jakarta Pusat</p>
             <a
               href={AKAD_MAP}
@@ -41,8 +41,8 @@ export default function EventDetails() {
           {/* Resepsi */}
           <div className="mb-4">
             <h3 className="font-serif text-2xl tracking-widest mb-3">RESEPSI</h3>
-            <p className="text-sm font-medium mb-1">Minggu, 2 Januari 2022</p>
-            <p className="text-sm font-medium mb-1">Pukul 11:00 WIB</p>
+            <p className="text-sm font-medium mb-1">Sabtu, 5 September 2026</p>
+            <p className="text-sm font-medium mb-1">Pukul 09:00 WIB</p>
             <p className="text-sm text-ivory/80">Graha Cempaka, Jakarta</p>
             <a
               href={RESEPSI_MAP}
@@ -65,23 +65,23 @@ export default function EventDetails() {
 
           <div className="flex flex-col gap-8 max-w-md mx-auto">
             <div>
-              <h4 className="font-bold text-sm mb-2">First Meet (2013)</h4>
-              <p className="text-xs text-mahogany/70 leading-relaxed">Bulan agustus 2013 kami pertama kali bertemu dalam Ospek Perkuliahan. Dalam masa kuliah kami hanya teman biasa.</p>
+              <h4 className="font-bold text-sm mb-2">First Meet (2022)</h4>
+              <p className="text-xs text-mahogany/70 leading-relaxed">Bulan Oktober 2022 pertama kali bertemu ngopi bareng di coffee shop.</p>
             </div>
 
             <div>
-              <h4 className="font-bold text-sm mb-2">Relationship (2018)</h4>
-              <p className="text-xs text-mahogany/70 leading-relaxed">25 Februari 2018 kami mengikat janji sebagai sepasang kekasih.</p>
+              <h4 className="font-bold text-sm mb-2">Relationship (2022)</h4>
+              <p className="text-xs text-mahogany/70 leading-relaxed">4 Desember 2022 kami memutuskan untuk mencoba mengenal satu sama lain sebagai sepasang kekasih.</p>
             </div>
 
             <div>
-              <h4 className="font-bold text-sm mb-2">Engagement (2021)</h4>
-              <p className="text-xs text-mahogany/70 leading-relaxed">Lika-liku hubungan kami lalui bersama hingga kami memutuskan untuk bertunangan pada 25 Februari 2021.</p>
+              <h4 className="font-bold text-sm mb-2">Engagement (2025)</h4>
+              <p className="text-xs text-mahogany/70 leading-relaxed">5 September 2025 kami melangkah ke jenjang yang lebih serius.</p>
             </div>
 
             <div>
-              <h4 className="font-bold text-sm mb-2">Married (2021)</h4>
-              <p className="text-xs text-mahogany/70 leading-relaxed">Kami memutuskan untuk mengikat janji suci pernikahan pada 09 Oktober 2021.</p>
+              <h4 className="font-bold text-sm mb-2">Married (2026)</h4>
+              <p className="text-xs text-mahogany/70 leading-relaxed">Dengan izin Allah SWT. dan keluarga, kami memutuskan untuk menikah pada 5 September 2026.</p>
             </div>
           </div>
         </FadeIn>

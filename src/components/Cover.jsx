@@ -73,7 +73,7 @@ export default function Cover({ onOpen }) {
         <div className="flex items-center gap-3 w-full justify-center drop-shadow-md">
           <div className="flex-1 max-w-[48px] h-px bg-ivory/40" />
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-ivory/90">
-            Sabtu, 24 Oktober 2026
+            Sabtu, 5 September 2026
           </p>
           <div className="flex-1 max-w-[48px] h-px bg-ivory/40" />
         </div>
