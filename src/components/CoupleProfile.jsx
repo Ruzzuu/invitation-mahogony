@@ -1,7 +1,7 @@
 import FadeIn from './FadeIn'
 
-const GROOM_PHOTO = '/groom.png'
-const BRIDE_PHOTO = '/bride.png'
+const GROOM_PHOTO = '/groom.webp'
+const BRIDE_PHOTO = '/bride.webp'
 
 function PersonCard({ photo, name, parents }) {
   return (
