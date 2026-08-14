@@ -71,6 +71,10 @@ export default function GalleryRSVP() {
 
   async function sendWish(e) {
     e.preventDefault()
+
+    const formData = new FormData(e.currentTarget)
+    if (formData.get('company_website')) return
+
     if (!name.trim() || !message.trim()) return
     setSending(true)
     setWishError('')
@@ -96,6 +100,10 @@ export default function GalleryRSVP() {
 
   async function sendRSVP(e) {
     e.preventDefault()
+
+    const formData = new FormData(e.currentTarget)
+    if (formData.get('company_website')) return
+
     if (!rsvpName.trim()) return
     setRsvpSending(true)
     setRsvpError('')
@@ -172,6 +180,15 @@ export default function GalleryRSVP() {
               </div>
             ) : (
               <form onSubmit={sendRSVP} className="bg-mahogany/90 border border-ivory/20 rounded-2xl p-6 flex flex-col gap-5">
+                <input
+                  type="text"
+                  name="company_website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="absolute left-[-9999px] h-px w-px opacity-0"
+                  aria-hidden="true"
+                />
+
                 <div>
                   <label className="text-xs tracking-wider text-ivory/60 mb-2 block uppercase">Nama Lengkap</label>
                   <input
@@ -179,6 +196,7 @@ export default function GalleryRSVP() {
                     onChange={(e) => setRsvpName(e.target.value)}
                     placeholder="Masukkan nama Anda"
                     className="w-full px-4 py-3 rounded-xl bg-mahogany border border-ivory/20 text-ivory text-sm outline-none focus:border-ivory/60 transition placeholder:text-ivory/40"
+                    maxLength={100}
                     required
                   />
                 </div>
@@ -276,10 +294,20 @@ export default function GalleryRSVP() {
             {/* Send wish form */}
             <form onSubmit={sendWish} className="bg-mahogany/90 border border-ivory/20 rounded-2xl p-5 flex flex-col gap-4 mb-10">
               <input
+                type="text"
+                name="company_website"
+                tabIndex={-1}
+                autoComplete="off"
+                className="absolute left-[-9999px] h-px w-px opacity-0"
+                aria-hidden="true"
+              />
+
+              <input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Nama Anda"
                 className="w-full px-4 py-3 rounded-xl bg-mahogany border border-ivory/20 text-ivory text-sm outline-none focus:border-ivory/60 transition placeholder:text-ivory/40"
+                maxLength={100}
                 required
               />
               {wishError && (
@@ -292,6 +320,7 @@ export default function GalleryRSVP() {
                   placeholder="Tuliskan ucapan & doa Anda..."
                   rows={2}
                   className="flex-1 px-4 py-3 rounded-xl bg-mahogany border border-ivory/20 text-ivory text-sm outline-none focus:border-ivory/60 transition resize-none placeholder:text-ivory/40"
+                  maxLength={1000}
                   required
                 />
                 <button
