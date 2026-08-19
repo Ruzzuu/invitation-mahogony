@@ -35,6 +35,7 @@ export default function GalleryRSVP() {
   const [rsvpSending, setRsvpSending] = useState(false)
   const [rsvpError, setRsvpError] = useState('')
   const [wishError, setWishError] = useState('')
+  const [accountCopied, setAccountCopied] = useState(false)
   const [selectedPhoto, setSelectedPhoto] = useState(null)
 
   const listRef = useRef(null)
@@ -95,6 +96,16 @@ export default function GalleryRSVP() {
       setName('')
       setMessage('')
       setTimeout(() => listRef.current?.scrollTo({ top: 0, behavior: 'smooth' }), 100)
+    }
+  }
+
+  async function copyAccountNumber() {
+    try {
+      await navigator.clipboard.writeText('1430025228550')
+      setAccountCopied(true)
+      setTimeout(() => setAccountCopied(false), 2000)
+    } catch {
+      setAccountCopied(false)
     }
   }
 
@@ -254,6 +265,59 @@ export default function GalleryRSVP() {
                 </button>
               </form>
             )}
+          </FadeIn>
+
+          {/* Digital gift section */}
+          <FadeIn className="mx-4 mb-16">
+            <div className="text-center mb-7">
+              <p className="text-xs tracking-[0.2em] uppercase text-ivory/60 font-semibold mb-2">WEDDING GIFT</p>
+              <h3 className="font-serif text-3xl text-ivory">Hadiah Digital</h3>
+              <div className="w-12 h-[1px] bg-ivory/20 mx-auto mt-4" />
+            </div>
+
+            <p className="mx-auto mb-6 max-w-sm text-center text-sm leading-relaxed text-ivory/70">
+              Tanpa mengurangi rasa hormat, bagi kerabat yang ingin memberikan hadiah atau tanda kasih secara digital, dapat dikirimkan melalui rekening berikut:
+            </p>
+
+            <div className="relative overflow-hidden rounded-2xl border border-ivory/20 bg-mahogany/90 p-6 shadow-xl">
+              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full border border-ivory/10" />
+              <div className="absolute -bottom-14 -left-8 h-36 w-36 rounded-full border border-ivory/10" />
+
+              <div className="relative z-10">
+                <div className="mb-8 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="material-symbols-outlined flex h-10 w-10 items-center justify-center rounded-full bg-ivory/10 text-ivory">
+                      account_balance
+                    </span>
+                    <div>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-ivory/50">Bank</p>
+                      <p className="font-serif text-xl font-semibold text-ivory">Mandiri</p>
+                    </div>
+                  </div>
+                  <span className="material-symbols-outlined text-3xl text-ivory/30">credit_card</span>
+                </div>
+
+                <p className="mb-2 text-[10px] uppercase tracking-[0.2em] text-ivory/50">Nomor Rekening</p>
+                <p className="mb-5 font-serif text-2xl tracking-[0.12em] text-ivory">1430025228550</p>
+
+                <div className="flex flex-col gap-4 border-t border-ivory/15 pt-5 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p className="mb-1 text-[10px] uppercase tracking-[0.2em] text-ivory/50">Atas Nama</p>
+                    <p className="text-sm font-semibold tracking-wide text-ivory">SITI NUR ALFATIHANA</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={copyAccountNumber}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-ivory px-4 py-2.5 text-xs font-semibold text-mahogany transition active:scale-95"
+                  >
+                    <span className="material-symbols-outlined text-base">
+                      {accountCopied ? 'check' : 'content_copy'}
+                    </span>
+                    {accountCopied ? 'Tersalin' : 'Salin Rekening'}
+                  </button>
+                </div>
+              </div>
+            </div>
           </FadeIn>
 
           {/* Guestbook section */}
