@@ -71,7 +71,7 @@ export default function App() {
 
   return (
     <>
-      <audio ref={audioRef} src="/Nadhif Basalamah kota ini tak sama tanpamu.mp3" loop onError={(e) => e.target.removeAttribute('src')} />
+      <audio ref={audioRef} src="/wedding-music.mp3" preload="none" loop onError={(e) => e.target.removeAttribute('src')} />
 
       {!opened ? (
         <Cover onOpen={handleOpen} />

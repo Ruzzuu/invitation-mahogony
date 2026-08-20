@@ -2,7 +2,7 @@
 
 Letakkan file musik wedding kamu di sini dengan nama:
 
-  public/music.mp3
+  public/wedding-music.mp3
 
 Contoh sumber musik gratis untuk wedding:
 - https://pixabay.com/music/search/romantic/

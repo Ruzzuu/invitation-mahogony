@@ -70,7 +70,7 @@ export default function Closing() {
             Music:
           </p>
           <p className="font-serif text-sm text-ivory/70 italic">
-            Nadhif Basalamah - kota ini tak sama tanpamu
+            Nadhif Basalamah - Bergema Sampai Selamanya
           </p>
         </FadeIn>
 
