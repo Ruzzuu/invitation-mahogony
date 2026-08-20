@@ -1,8 +1,7 @@
 import Countdown from './Countdown'
 import FadeIn from './FadeIn'
 
-const AKAD_MAP = 'https://maps.app.goo.gl/ocemaVVZd9t6CDnq6'
-const RESEPSI_MAP = 'https://maps.app.goo.gl/Zp7DoRCEpxAF9mpG8'
+const EVENT_MAP = 'https://www.google.com/maps?q=-8.401123,114.273621'
 
 export default function EventDetails() {
   return (
@@ -20,17 +19,7 @@ export default function EventDetails() {
           <div className="mb-6">
             <h3 className="font-serif text-2xl tracking-widest mb-3">AKAD NIKAH</h3>
             <p className="text-sm font-medium mb-1">Sabtu, 5 September 2026</p>
-            <p className="text-sm font-medium mb-1">Pukul 09:00 WIB</p>
-            <p className="text-sm text-ivory/80">Masjid Istiqlal, Jakarta Pusat</p>
-            <a
-              href={AKAD_MAP}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 mt-4 px-5 py-2.5 rounded-full bg-ivory text-xs text-mahogany font-medium hover:bg-ivory/90 active:scale-95 transition-all shadow-md"
-            >
-              <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: "'FILL' 1" }}>location_on</span>
-              Buka Google Maps
-            </a>
+            <p className="text-sm font-medium">Pukul 09:00 WIB</p>
           </div>
 
           {/* Countdown */}
@@ -39,18 +28,31 @@ export default function EventDetails() {
           </div>
 
           {/* Resepsi */}
-          <div className="mb-4">
+          <div className="mb-7">
             <h3 className="font-serif text-2xl tracking-widest mb-3">RESEPSI</h3>
             <p className="text-sm font-medium mb-1">Sabtu, 5 September 2026</p>
-            <p className="text-sm font-medium mb-1">Pukul 09:00 WIB</p>
-            <p className="text-sm text-ivory/80">Graha Cempaka, Jakarta</p>
+            <p className="text-sm font-medium">Pukul 09:00 WIB</p>
+          </div>
+
+          {/* Shared event location */}
+          <div className="mx-auto max-w-sm rounded-2xl border border-ivory/20 bg-mahogany/70 p-5 shadow-lg backdrop-blur-sm">
+            <span
+              className="material-symbols-outlined mb-3 text-3xl text-ivory"
+              style={{ fontVariationSettings: "'FILL' 1" }}
+            >
+              location_on
+            </span>
+            <p className="mb-2 font-serif text-xl text-ivory">Lokasi Acara</p>
+            <p className="mb-5 text-xs leading-relaxed text-ivory/70">
+              Akad nikah dan resepsi dilaksanakan di tempat yang sama.
+            </p>
             <a
-              href={RESEPSI_MAP}
+              href={EVENT_MAP}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 mt-4 px-5 py-2.5 rounded-full bg-ivory text-xs text-mahogany font-medium hover:bg-ivory/90 active:scale-95 transition-all shadow-md"
+              className="inline-flex items-center gap-2 rounded-full bg-ivory px-6 py-3 text-xs font-semibold text-mahogany shadow-md transition-all hover:bg-ivory/90 active:scale-95"
             >
-              <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: "'FILL' 1" }}>location_on</span>
+              <span className="material-symbols-outlined text-base">map</span>
               Buka Google Maps
             </a>
           </div>
