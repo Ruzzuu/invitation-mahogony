@@ -27,11 +27,11 @@ export default function EventDetails() {
             <Countdown />
           </div>
 
-          {/* Resepsi */}
+          {/* Ramah Tamah */}
           <div className="mb-7">
-            <h3 className="font-serif text-2xl tracking-widest mb-3">RESEPSI</h3>
+            <h3 className="font-serif text-2xl tracking-widest mb-3">RAMAH TAMAH</h3>
             <p className="text-sm font-medium mb-1">Sabtu, 5 September 2026</p>
-            <p className="text-sm font-medium">Pukul 09:00 WIB</p>
+            <p className="text-sm font-medium">Pukul 11:00 WIB</p>
           </div>
 
           {/* Shared event location */}
@@ -44,7 +44,7 @@ export default function EventDetails() {
             </span>
             <p className="mb-2 font-serif text-xl text-ivory">Lokasi Acara</p>
             <p className="mb-5 text-xs leading-relaxed text-ivory/70">
-              Akad nikah dan resepsi dilaksanakan di tempat yang sama.
+              Akad nikah dan ramah tamah dilaksanakan di tempat yang sama.
             </p>
             <a
               href={EVENT_MAP}
