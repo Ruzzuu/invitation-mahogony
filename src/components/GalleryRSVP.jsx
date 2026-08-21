@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { INVITATION_SLUG, supabase } from '../lib/supabase'
 import FadeIn from './FadeIn'
+import ResponsiveBackground from './ResponsiveBackground'
 
 const PHOTOS = [
   { url: '/foto1.jpeg', alt: 'Gallery photo 1' },
@@ -166,11 +167,9 @@ export default function GalleryRSVP() {
       </div>
 
       {/* RSVP & Wishes Section (Dark with Background) */}
-      <div
-        className="relative py-10 rounded-t-3xl -mt-6 overflow-hidden bg-cover bg-center shadow-[0_-10px_20px_rgba(0,0,0,0.2)]"
-        style={{ backgroundImage: 'url(/together.jpeg)' }}
-      >
-        {/* Background Image with Overlay */}
+      <div className="relative py-10 rounded-t-3xl -mt-6 overflow-hidden shadow-[0_-10px_20px_rgba(0,0,0,0.2)]">
+        {/* Responsive background with overlay */}
+        <ResponsiveBackground src="/together.jpeg" />
         <div className="absolute inset-0 bg-mahogany/55" />
         <div className="absolute inset-0 bg-gradient-to-t from-mahogany via-transparent to-mahogany/40" />
 

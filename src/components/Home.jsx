@@ -1,5 +1,6 @@
 ﻿import Countdown from './Countdown'
 import FadeIn from './FadeIn'
+import ResponsiveBackground from './ResponsiveBackground'
 
 const CAL_DATE = '20260905T090000'
 const CAL_END = '20260905T150000'
@@ -9,7 +10,8 @@ export default function Home({ onTabChange, onShare }) {
   return (
     <div className="min-h-full bg-mahogany pb-14">
       {/* Header hero */}
-      <FadeIn className="relative w-full bg-cover bg-center" style={{ backgroundImage: 'url(/together.jpeg)' }}>
+      <FadeIn className="relative w-full overflow-hidden">
+        <ResponsiveBackground src="/together.jpeg" mobileContain={false} />
         <div className="absolute inset-0 bg-mahogany/55" />
         <div className="absolute inset-0 bg-gradient-to-t from-mahogany via-transparent to-mahogany/40" />
         <div className="relative z-10 flex flex-col items-center text-ivory pt-8 pb-6">
@@ -39,9 +41,11 @@ export default function Home({ onTabChange, onShare }) {
         </div>
 
         {/* Second Photo */}
-        <div 
-          className="w-full aspect-[4/3] bg-cover bg-[center_top]" 
-          style={{ backgroundImage: 'url(/together.jpeg)' }} 
+        <img
+          src="/together.jpeg"
+          alt="Alfa dan Rizaldy"
+          className="aspect-[4/3] w-full object-cover object-center"
+          loading="lazy"
         />
       </FadeIn>
 

@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState } from 'react'
 import { WEDDING_DATE } from '../App'
+import ResponsiveBackground from './ResponsiveBackground'
 
 function useCountdown(target) {
   const calc = () => {
@@ -35,11 +36,8 @@ export default function Cover({ onOpen }) {
 
   return (
     <div className="relative flex flex-col items-center justify-between min-h-screen overflow-hidden text-center select-none text-ivory">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        style={{ backgroundImage: 'url(/together.jpeg)' }}
-      />
+      {/* Responsive background keeps both people visible on narrow screens */}
+      <ResponsiveBackground src="/together.jpeg" priority />
       
       {/* Overlay - Semi-transparent to keep text readable without being full black */}
       <div className="absolute inset-0 bg-mahogany/55 z-0" />

@@ -1,5 +1,6 @@
 import Countdown from './Countdown'
 import FadeIn from './FadeIn'
+import ResponsiveBackground from './ResponsiveBackground'
 
 const EVENT_MAP = 'https://www.google.com/maps?q=-8.401123,114.273621'
 
@@ -7,7 +8,8 @@ export default function EventDetails() {
   return (
     <div className="min-h-full bg-mahogany pb-10">
       {/* Top Section: Events with Background Image */}
-      <div className="relative w-full bg-cover bg-center pb-8 pt-10" style={{ backgroundImage: 'url(/together.jpeg)' }}>
+      <div className="relative w-full overflow-hidden pb-8 pt-10">
+        <ResponsiveBackground src="/together.jpeg" />
         <div className="absolute inset-0 bg-mahogany/55" />
         <div className="absolute inset-0 bg-gradient-to-t from-mahogany via-transparent to-mahogany/40" />
         

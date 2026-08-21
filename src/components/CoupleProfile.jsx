@@ -8,10 +8,14 @@ function PersonCard({ photo, name, parents }) {
     <FadeIn className="mx-6 mb-6 text-center">
       {/* Large portrait photo */}
       <div className="flex justify-center mb-4">
-        <div
-          className="w-full max-w-[280px] aspect-[3/4] rounded-2xl overflow-hidden shadow-lg"
-          style={{ backgroundImage: `url(${photo})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-        />
+        <div className="aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-2xl shadow-lg">
+          <img
+            src={photo}
+            alt={name}
+            className="h-full w-full object-cover object-center"
+            loading="lazy"
+          />
+        </div>
       </div>
 
       {/* Name */}

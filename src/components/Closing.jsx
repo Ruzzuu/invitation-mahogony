@@ -1,13 +1,11 @@
 import FadeIn from './FadeIn'
+import ResponsiveBackground from './ResponsiveBackground'
 
 export default function Closing() {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-center select-none text-ivory py-20 px-6">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        style={{ backgroundImage: 'url(/together.jpeg)' }}
-      />
+      {/* Responsive background keeps both people visible on narrow screens */}
+      <ResponsiveBackground src="/together.jpeg" />
       
       {/* Overlay - Darker for the closing section to make text pop */}
       <div className="absolute inset-0 bg-mahogany/80 z-0" />
