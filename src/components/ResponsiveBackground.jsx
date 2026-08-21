@@ -8,13 +8,25 @@ export default function ResponsiveBackground({ src, mobileContain = true, priori
         loading={priority ? 'eager' : 'lazy'}
         fetchPriority={priority ? 'high' : 'auto'}
       />
-      <img
-        src={src}
-        alt=""
-        className={`absolute inset-0 h-full w-full object-center ${mobileContain ? 'object-contain sm:object-cover' : 'object-cover'}`}
-        loading={priority ? 'eager' : 'lazy'}
-        fetchPriority={priority ? 'high' : 'auto'}
-      />
+      {mobileContain ? (
+        <div className="absolute inset-0 flex items-center overflow-hidden sm:block">
+          <img
+            src={src}
+            alt=""
+            className="responsive-photo-main"
+            loading={priority ? 'eager' : 'lazy'}
+            fetchPriority={priority ? 'high' : 'auto'}
+          />
+        </div>
+      ) : (
+        <img
+          src={src}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : 'auto'}
+        />
+      )}
     </div>
   )
 }
