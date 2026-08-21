@@ -40,6 +40,8 @@ export default function GalleryRSVP() {
   const [selectedPhoto, setSelectedPhoto] = useState(null)
 
   const listRef = useRef(null)
+  const wishSubmittingRef = useRef(false)
+  const rsvpSubmittingRef = useRef(false)
 
   useEffect(() => {
     loadWishes()
@@ -77,26 +79,36 @@ export default function GalleryRSVP() {
     const formData = new FormData(e.currentTarget)
     if (formData.get('company_website')) return
 
-    if (!name.trim() || !message.trim()) return
+    if (!name.trim() || !message.trim() || wishSubmittingRef.current) return
+
+    wishSubmittingRef.current = true
     setSending(true)
     setWishError('')
-    const { data, error } = await supabase
-      .from('wishes')
-      .insert({
-        invitation_slug: INVITATION_SLUG,
-        name: name.trim(),
-        message: message.trim(),
-      })
-      .select()
-      .single()
-    setSending(false)
-    if (error) {
+
+    try {
+      const { data, error } = await supabase
+        .from('wishes')
+        .insert({
+          invitation_slug: INVITATION_SLUG,
+          name: name.trim(),
+          message: message.trim(),
+        })
+        .select('id, name, message, created_at')
+        .single()
+
+      if (error) {
+        setWishError('Gagal mengirim ucapan. Silakan coba lagi.')
+      } else if (data) {
+        setWishes((prev) => [data, ...prev])
+        setName('')
+        setMessage('')
+        setTimeout(() => listRef.current?.scrollTo({ top: 0, behavior: 'smooth' }), 100)
+      }
+    } catch {
       setWishError('Gagal mengirim ucapan. Silakan coba lagi.')
-    } else if (data) {
-      setWishes((prev) => [data, ...prev])
-      setName('')
-      setMessage('')
-      setTimeout(() => listRef.current?.scrollTo({ top: 0, behavior: 'smooth' }), 100)
+    } finally {
+      wishSubmittingRef.current = false
+      setSending(false)
     }
   }
 
@@ -116,22 +128,32 @@ export default function GalleryRSVP() {
     const formData = new FormData(e.currentTarget)
     if (formData.get('company_website')) return
 
-    if (!rsvpName.trim()) return
+    if (!rsvpName.trim() || rsvpSubmittingRef.current) return
+
+    rsvpSubmittingRef.current = true
     setRsvpSending(true)
     setRsvpError('')
-    const { error } = await supabase
-      .from('rsvp')
-      .insert({
-        invitation_slug: INVITATION_SLUG,
-        name: rsvpName.trim(),
-        hadir,
-        jumlah_tamu: hadir ? jumlah : 0,
-      })
-    setRsvpSending(false)
-    if (error) {
+
+    try {
+      const { error } = await supabase
+        .from('rsvp')
+        .insert({
+          invitation_slug: INVITATION_SLUG,
+          name: rsvpName.trim(),
+          hadir,
+          jumlah_tamu: hadir ? jumlah : 0,
+        })
+
+      if (error) {
+        setRsvpError('Gagal mengirim konfirmasi. Silakan coba lagi.')
+      } else {
+        setRsvpSent(true)
+      }
+    } catch {
       setRsvpError('Gagal mengirim konfirmasi. Silakan coba lagi.')
-    } else {
-      setRsvpSent(true)
+    } finally {
+      rsvpSubmittingRef.current = false
+      setRsvpSending(false)
     }
   }
 
@@ -185,7 +207,7 @@ export default function GalleryRSVP() {
             {rsvpSent ? (
               <div className="bg-mahogany/90 border border-ivory/20 rounded-2xl p-8 text-center">
                 <span className="material-symbols-outlined text-5xl text-ivory/80 mb-4 block" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-                <p className="font-serif text-xl text-ivory mb-2">Terima kasih, {rsvpName}!</p>
+                <p className="font-serif text-xl text-ivory mb-2">Terima kasih, {rsvpName.trim()}!</p>
                 <p className="text-sm text-ivory/60">Konfirmasi kehadiran Anda telah kami terima.</p>
               </div>
             ) : (
@@ -389,6 +411,7 @@ export default function GalleryRSVP() {
                 <button
                   type="submit"
                   disabled={sending}
+                  aria-label="Kirim ucapan"
                   className="w-12 h-12 self-end rounded-xl bg-ivory hover:bg-ivory/90 text-mahogany flex items-center justify-center active:scale-[0.98] transition-all disabled:opacity-60 flex-shrink-0"
                 >
                   <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>
